@@ -28,18 +28,6 @@ public class TrappingRainwater {
         // No unsorted pair found
         return true;
     }
-    public static void waterLevel(int leftMaxBar[],int rightMaxBar[],int arr[]){
-        int length= arr.length;
-        leftMaxBar[0]=arr[0];
-        rightMaxBar[length-1]=arr[length-1];
-        for(int i=1; i<length; i++){
-            leftMaxBar[i]=Math.max(leftMaxBar[i-1],arr[i]);
-        }
-        for (int i=length-2; i>=0; i--){
-            rightMaxBar[i]=Math.max(rightMaxBar[i+1],arr[i]);
-        }
-    }
-
     public static int trapRainWaterSolution(int arr[]){
         int length = arr.length;
         int trappedRainWater = 0;
@@ -48,7 +36,15 @@ public class TrappingRainwater {
         }else{
             int leftMaxBar[] = new int[length];
             int rightMaxBar[] = new int[length];
-            waterLevel(leftMaxBar,rightMaxBar,arr);
+            leftMaxBar[0]=arr[0];
+            rightMaxBar[length-1]=arr[length-1];
+            for(int i=1; i<length; i++){
+                leftMaxBar[i]=Math.max(leftMaxBar[i-1],arr[i]);
+            }
+            for (int i=length-2; i>=0; i--){
+                rightMaxBar[i]=Math.max(rightMaxBar[i+1],arr[i]);
+            }
+
             for (int i=0; i<length; i++){
                 trappedRainWater = trappedRainWater + Math.min(leftMaxBar[i],rightMaxBar[i])-arr[i];
 //                trappedRainWater = Math.min(leftMaxBar[i],rightMaxBar[i])-arr[i] *width; //width is 1 so not including it
