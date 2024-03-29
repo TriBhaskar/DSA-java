@@ -1,6 +1,20 @@
 package org.example.ARRAYS;
 
 public class SortingAlgorithm {
+    public static void insertionSort(int arr[]){
+        int temp=0;
+        for(int i=1; i<arr.length; i++){
+            int current = i;
+            int previous = i-1;
+            while(previous >=0 && arr[current]<arr[previous]){
+                temp = arr[current];
+                arr[current]= arr[previous];
+                arr[previous]=temp;
+                previous--;
+                current--;
+            }
+        }
+    }
     public static void selectionSort(int arr[]){
         int temp=0;
         for(int i=0; i<arr.length-1; i++){
@@ -34,7 +48,8 @@ public class SortingAlgorithm {
     public static void main(String[] args) {
         int arr[] = {5,4,1,3,2,9,7,0};
 //        bubbleSort(arr);
-        selectionSort(arr);
+//        selectionSort(arr);
+        insertionSort(arr);
         for(int i=0; i<arr.length; i++){
             System.out.print(arr[i]+" ");
         }
