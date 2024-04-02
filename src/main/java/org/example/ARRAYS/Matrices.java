@@ -1,11 +1,18 @@
 package org.example.ARRAYS;
 
-import org.apache.commons.logging.LogFactory;
-import org.slf4j.Logger;
-
 import java.util.Scanner;
 
 public class Matrices {
+    public static void search(int matrix[][], int key){
+        for (int i=0; i<3; i++){
+            for (int j=0; j<3; j++){
+                if(matrix[i][j]==key){
+                    System.out.println("Found "+key+" at index "+i+" row "+j+" colm");
+                }
+            }
+
+        }
+    }
     public static void main(String[] args) {
         int matrix[][] = new int [3][3];
 
@@ -24,5 +31,6 @@ public class Matrices {
             }
             System.out.println();
         }
+        search(matrix,3);
     }
 }
